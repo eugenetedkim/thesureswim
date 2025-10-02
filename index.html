@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>SureSwim Pool & Spa - CPO-Certified Pool Service Chino & Chino Hills</title>
+    <meta name="title" content="SureSwim Pool & Spa - CPO-Certified Pool Service Chino & Chino Hills">
+    <meta name="description" content="Family-focused pool cleaning & repair in Chino, CA. CPO-certified operator ensuring truly safe water for your family. Not just clean - safe. Call (909) 668-3521 for your free safety assessment.">
+    <meta name="keywords" content="pool service Chino, pool cleaning Chino Hills, CPO certified pool operator, pool repair Chino, pool maintenance Chino Hills, family safe pool cleaning, pool water testing Chino, pool safety assessment">
+    <meta name="author" content="Eugene Kim - SureSwim Pool & Spa">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Local Business Schema -->
+    <meta name="geo.region" content="US-CA">
+    <meta name="geo.placename" content="Chino">
+    <meta name="geo.position" content="33.9767;-117.6889">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thesureswim.com/">
+    <meta property="og:title" content="SureSwim Pool & Spa - CPO-Certified Pool Service Chino & Chino Hills">
+    <meta property="og:description" content="Family-focused pool cleaning & repair in Chino, CA. CPO-certified operator ensuring truly safe water for your family. Not just clean - safe.">
+    <meta property="og:image" content="https://thesureswim.com/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="SureSwim Pool & Spa">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://thesureswim.com/">
+    <meta property="twitter:title" content="SureSwim Pool & Spa - CPO-Certified Pool Service Chino & Chino Hills">
+    <meta property="twitter:description" content="Family-focused pool cleaning & repair in Chino, CA. CPO-certified operator ensuring truly safe water for your family.">
+    <meta property="twitter:image" content="https://thesureswim.com/twitter-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://thesureswim.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- JSON-LD Structured Data for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "SureSwim Pool & Spa",
+      "image": "https://thesureswim.com/logo.jpg",
+      "@id": "https://thesureswim.com",
+      "url": "https://thesureswim.com",
+      "telephone": "+19096683521",
+      "email": "eugene@thesureswim.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "6768 Piedmont St",
+        "addressLocality": "Chino",
+        "addressRegion": "CA",
+        "postalCode": "91710",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 33.9767,
+        "longitude": -117.6889
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "16:00"
+        }
+      ],
+      "priceRange": "$",
+      "description": "CPO-certified pool cleaning, maintenance, and repair service in Chino and Chino Hills. Family-focused water safety and professional pool care.",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Chino"
+        },
+        {
+          "@type": "City",
+          "name": "Chino Hills"
+        }
+      ],
+      "serviceType": [
+        "Pool Cleaning",
+        "Pool Maintenance",
+        "Pool Repair",
+        "Water Testing",
+        "Pool Safety Assessment",
+        "Equipment Repair"
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Eugene Kim",
+        "jobTitle": "Certified Pool Operator"
+      },
+      "slogan": "More Than Clean. Safe."
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background */
+        .hero {
+            background: linear-gradient(-45deg, #0066cc, #0088ff, #00aaff, #0066cc);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating animation for elements */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0066cc;
+        }
+
+        /* Hero Section */
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: slideInLeft 1s ease 0.2s forwards;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            font-weight: 600;
+            animation: slideInLeft 1s ease 0.3s forwards;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: slideInLeft 1s ease 0.4s forwards;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .credentials {
+            margin: 1.5rem 0;
+            opacity: 0;
+            animation: slideInLeft 1s ease 0.5s forwards;
+        }
+
+        .cert-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            gap: 0.8rem;
+        }
+
+        .cert-icon {
+            font-size: 1.5rem;
+        }
+
+        .cert-text {
+            font-weight: 600;
+            font-size: 0.9rem;
+            line-height: 1.2;
+        }
+
+        .cert-text small {
+            font-size: 0.7rem;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+            opacity: 0;
+            animation: slideInLeft 1s ease 0.6s forwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+            background: #e55a2b;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .pool-icon {
+            width: 400px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            animation: slideInRight 1s ease 0.8s both;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            color: #0066cc;
+            margin-bottom: 1rem;
+        }
+
+        .about-content .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .about-story {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .promise-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #0066cc;
+        }
+
+        .promise-box h4 {
+            color: #0066cc;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 102, 204, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0066cc, #00aaff);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #0066cc, #00aaff);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .contact-details {
+            space-y: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #ff6b35;
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .pool-icon {
+                width: 300px;
+                height: 200px;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">🏊 SureSwim Pool & Spa</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-choose">Why Choose Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>More Than Clean. Safe.</h1>
+                <div class="tagline">CPO-Certified Pool Safety & Maintenance</div>
+                <p>Professional pool cleaning and repair services with science-backed, CPO-certified methods to ensure your water is truly safe for your family.</p>
+                <div class="credentials">
+                    <div class="cert-badge">
+                        <span class="cert-icon">🏆</span>
+                        <span class="cert-text">CPO Certified<br><small>Pool & Hot Tub Alliance</small></span>
+                    </div>
+                </div>
+                <a href="#contact" class="cta-button">Get Your Free Safety Assessment</a>
+            </div>
+            <div class="hero-visual">
+                <div class="pool-icon floating"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">More Than a Clean Pool. A Peace of Mind Guarantee.</h2>
+            <div class="about-content">
+                <h3 class="fade-in">Eugene Kim, Founder & Certified Pool Operator</h3>
+                <p class="subtitle fade-in">Parent First. Pool Expert Second.</p>
+                
+                <div class="about-story fade-in">
+                    <p>Hello! I'm the owner of SureSwim Pool & Spa, but first and foremost, I'm a parent. When my toddler started swimming, I did what any concerned parent would do: I became a Certified Pool Operator (CPO) to learn everything I could about water safety.</p>
+                    
+                    <p><strong>What I discovered shocked me.</strong></p>
+                    
+                    <p>I learned that many pool services focus on making water <em>look</em> crystal clear, but they often overlook the invisible dangers: improper chemical balance that can cause skin and eye irritation, harmful chloramines that affect breathing, and chlorine-resistant pathogens that can make families sick.</p>
+                    
+                    <p>I realized most pool owners have no idea these risks are lurking in their water. They trust that a clean-looking pool is a safe pool. I started SureSwim to change that.</p>
+                </div>
+
+                <div class="promise-box fade-in">
+                    <h4>Our Promise:</h4>
+                    <p>We don't just clean your pool. We use science-backed, CPO-certified methods to ensure your water is truly safe for your children, your family, and your friends. We safeguard your swim.</p>
+                    
+                    <p>You can enjoy your pool with complete confidence, knowing that every chemical is perfectly balanced and every test is performed with your family's health as the top priority.</p>
+                    
+                    <p><em>Thank you for considering SureSwim. I look forward to giving you the peace of mind you deserve.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Safety-First Services</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🧪</div>
+                    <h3>CPO-Certified Water Testing</h3>
+                    <p>Comprehensive chemical analysis using professional-grade testing to ensure perfect balance and eliminate harmful pathogens that basic tests miss.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Family Safety Maintenance</h3>
+                    <p>Weekly cleaning with focus on family health: skimming, vacuuming, filter cleaning, and precise chemical balancing for truly safe swimming.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔧</div>
+                    <h3>Expert Equipment Repair</h3>
+                    <p>Professional repair services for pumps, heaters, filters, and automation systems. Quick diagnostics and reliable fixes by a certified operator.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚨</div>
+                    <h3>Emergency Pool Safety</h3>
+                    <p>Rapid response for urgent pool safety issues. Available when water clarity or chemical imbalance could affect your family's health.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏊</div>
+                    <h3>Seasonal Safety Prep</h3>
+                    <p>Professional pool opening and closing services ensuring safe water chemistry transitions and proper equipment winterization.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">💡</div>
+                    <h3>Safety Equipment Upgrades</h3>
+                    <p>Modern, efficient equipment installation focused on improving water safety, chemistry control, and reducing maintenance complexity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose" id="why-choose">
+        <div class="container">
+            <h2 class="section-title fade-in">Why Choose SureSwim Pool & Spa?</h2>
+            <div class="features-grid">
+                <div class="feature fade-in">
+                    <div class="feature-icon">📜</div>
+                    <h3>CPO Certified Professional</h3>
+                    <p>Certified Pool & Spa Operator with expert training in water chemistry, safety protocols, and equipment operation from the Pool & Hot Tub Alliance.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Parent-Driven Safety Focus</h3>
+                    <p>As a parent myself, I understand the importance of truly safe water. Your family's health comes first, not just crystal clear appearance.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">💰</div>
+                    <h3>Transparent Pricing</h3>
+                    <p>Fair, honest pricing with no hidden fees. Get professional CPO-certified service without corporate overhead costs.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">🕒</div>
+                    <h3>Reliable Service</h3>
+                    <p>Consistent, dependable service visits. Your pool safety will never be forgotten or delayed - I personally guarantee it.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">📱</div>
+                    <h3>Direct Owner Contact</h3>
+                    <p>Text, call, or email me directly. Quick responses to questions, concerns, or urgent pool safety issues.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">✅</div>
+                    <h3>Licensed & Insured</h3>
+                    <p>CPO certified, licensed business, and fully insured professional service. Your property and family are protected with every visit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Ready for True Pool Safety?</h3>
+                    <p>Get your free safety assessment today. Let's discuss how I can give you complete peace of mind about your family's swimming water.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span>📞</span>
+                            <span>(909) 668-3521</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>✉️</span>
+                            <span>eugene@thesureswim.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>📍</span>
+                            <span>Serving Chino, Chino Hills & Surrounding Areas</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>⏰</span>
+                            <span>Mon-Fri: 8AM-6PM, Sat: 9AM-4PM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell me about your pool and family</label>
+                            <textarea id="message" name="message" placeholder="Pool size, current concerns, kids' ages, service frequency needed, etc."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Request Free Safety Assessment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SureSwim Pool & Spa. CPO Certified • Licensed & Insured • FBN#20250008840 • Protecting families with safe, clean pools.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest in SureSwim! I\'ll contact you within 24 hours to schedule your free pool safety assessment.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
