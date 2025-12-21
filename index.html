@@ -108,6 +108,9 @@
       background: #f7f8fb;
       overflow-x:hidden;
     }
+    body.menu-open{
+      overflow: hidden; /* lock scroll when menu open */
+    }
 
     /* ====== NAV ====== */
     nav{
@@ -118,6 +121,7 @@
       transition: all .25s ease;
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(0,0,0,0.05);
     }
     nav.scrolled{
@@ -252,26 +256,59 @@
     .hamburger.active span::before{ transform: rotate(45deg); top:0; }
     .hamburger.active span::after{ transform: rotate(-45deg); top:0; }
 
+    /* ====== MOBILE MENU OVERLAY (BODY-LEVEL, iPhone-safe) ====== */
+    .mobile-menu{
+      position: fixed;
+      inset: 0;
+      z-index: 999999; /* guaranteed above everything */
+      background: rgba(255,255,255,0.985);
+      display: none;
+      overflow-y: auto;
+
+      /* slide animation */
+      transform: translate3d(100%,0,0);
+      transition: transform .25s ease;
+    }
+    .mobile-menu.open{
+      display: block;
+      transform: translate3d(0,0,0);
+    }
+
+    .mobile-menu-inner{
+      padding: 90px 16px 16px 16px; /* space for fixed navbar */
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .mobile-menu a{
+      display:block;
+      width: 100%;
+      text-decoration:none;
+      color: rgba(11,27,52,0.92);
+      font-weight: 750;
+      padding: 14px 12px;
+      border-radius: 14px;
+      background: rgba(0,0,0,0.03);
+      margin-bottom: 10px;
+    }
+
     /* ====== HERO ====== */
     .hero{
-    background:
+      background:
         radial-gradient(1200px 600px at 15% 20%, rgba(53,167,255,0.25), transparent 60%),
         radial-gradient(1000px 550px at 80% 10%, rgba(43,224,255,0.25), transparent 60%),
         linear-gradient(180deg, #0b1220 0%, #0b1220 100%);
-    padding: 110px 0 60px 0;
-    position: relative;
-    z-index: 0;
-    overflow: hidden;
+      padding: 110px 0 60px 0;
+      position: relative;
+      overflow: hidden;
     }
 
     .hero::after{
-    content:"";
-    position:absolute;
-    left:0; right:0; bottom:-1px;
-    height: 80px;
-    background: linear-gradient(180deg, rgba(11,18,32,0) 0%, #f7f8fb 100%);
-    pointer-events:none;
-    z-index: 0;
+      content:"";
+      position:absolute;
+      left:0; right:0; bottom:-1px;
+      height: 80px;
+      background: linear-gradient(180deg, rgba(11,18,32,0) 0%, #f7f8fb 100%);
+      pointer-events:none;
     }
 
     .hero-wrap{
@@ -282,8 +319,6 @@
       grid-template-columns: 1.1fr 0.9fr;
       gap: 26px;
       align-items: center;
-      position: relative;
-      z-index: 1;
     }
 
     .hero h1{
@@ -317,10 +352,7 @@
       font-weight: 700;
       font-size: 0.9rem;
       backdrop-filter: blur(10px);
-    }
-    .pill small{
-      font-weight: 650;
-      opacity: 0.85;
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .hero-actions{
@@ -334,9 +366,6 @@
       background: rgba(255,255,255,0.12);
       color: rgba(255,255,255,0.92);
     }
-    .hero-actions .btn:hover{
-      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
-    }
     .hero-actions .btn.primary{
       background: linear-gradient(135deg, var(--accent), #ff9158);
       border:none;
@@ -349,6 +378,7 @@
       padding: 18px;
       box-shadow: 0 18px 55px rgba(0,0,0,0.28);
       backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       color: rgba(255,255,255,0.92);
     }
     .hero-card h3{
@@ -647,50 +677,34 @@
       .steps{ grid-template-columns: 1fr 1fr; }
       .trust-strip{ grid-template-columns: 1fr 1fr; }
     }
+
     @media (max-width: 680px){
-    .nav-links{
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-
-        transform: translateX(100%);
-        transition: transform .25s ease;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 10px;
-
-        padding: 90px 16px 16px 16px;
-        background: rgba(255,255,255,0.98);
-        backdrop-filter: blur(10px);
-
-        z-index: 10000;  /* <-- CHANGED */
-        overflow-y: auto;
+      .nav-links{ display:none; } /* hide desktop links */
+      .nav-cta{ display:none; }
+      .hamburger{ display:flex; }
+      nav{
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
     }
-
-    .nav-links.active{
-        transform: translateX(0);
-    }
-
-    .nav-links a{
-        width: 100%;
-        text-align: left;
-        padding: 14px 12px;
-        border-radius: 14px;
-        background: rgba(0,0,0,0.03);
-    }
-
-    .nav-cta{ display: none; }
-    .hamburger{ display: flex; position: relative; z-index: 10001; } /* <-- CHANGED */
-    }
-
   </style>
 </head>
 
 <body>
+  <!-- MOBILE MENU OVERLAY (BODY LEVEL) -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-inner" role="dialog" aria-label="Mobile menu">
+      <a href="#services">Services</a>
+      <a href="#process">How it works</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:+19096683521">(909) 668-3521</a>
+      <a href="#contact" style="background: linear-gradient(135deg, var(--accent), #ff9158); color: white; border: none;">
+        Get a Quote
+      </a>
+    </div>
+  </div>
+
   <!-- NAV -->
   <nav id="navbar" aria-label="Primary">
     <div class="nav-wrap">
@@ -706,6 +720,7 @@
         <span></span>
       </button>
 
+      <!-- Desktop links only -->
       <ul class="nav-links" id="navLinks">
         <li><a href="#services">Services</a></li>
         <li><a href="#process">How it works</a></li>
@@ -1026,23 +1041,46 @@
   </footer>
 
   <script>
-    // Mobile menu
+    // Mobile menu (BODY-level overlay)
     const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("navLinks");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    function openMenu(){
+      hamburger.classList.add("active");
+      hamburger.setAttribute("aria-expanded","true");
+      mobileMenu.classList.add("open");
+      mobileMenu.setAttribute("aria-hidden","false");
+      document.body.classList.add("menu-open");
+    }
+
+    function closeMenu(){
+      hamburger.classList.remove("active");
+      hamburger.setAttribute("aria-expanded","false");
+      mobileMenu.classList.remove("open");
+      mobileMenu.setAttribute("aria-hidden","true");
+      document.body.classList.remove("menu-open");
+    }
 
     hamburger.addEventListener("click", () => {
-      const isOpen = hamburger.classList.toggle("active");
-      navLinks.classList.toggle("active");
-      hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      const isOpen = mobileMenu.classList.contains("open");
+      if (isOpen) closeMenu();
+      else openMenu();
     });
 
-    // Close menu on link click
-    document.querySelectorAll(".nav-links a").forEach((a) => {
-      a.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        navLinks.classList.remove("active");
-        hamburger.setAttribute("aria-expanded", "false");
-      });
+    // Close menu on any menu link click
+    mobileMenu.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", closeMenu);
+    });
+
+    // Close on Escape
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && mobileMenu.classList.contains("open")) closeMenu();
+    });
+
+    // Close if user taps outside inner panel (optional)
+    mobileMenu.addEventListener("click", (e) => {
+      const inner = mobileMenu.querySelector(".mobile-menu-inner");
+      if (!inner.contains(e.target)) closeMenu();
     });
 
     // Navbar scroll effect
