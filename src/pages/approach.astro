@@ -1,120 +1,76 @@
 ---
-const bizName = "SureSwim Pool & Spa";
+import { sanity } from "../lib/sanity";
+import { urlFor } from "../lib/sanityImage";
+
+const s = await sanity.fetch(`*[_type=="siteSettings"][0]{logoImage,businessName}`);
+const bizName = s?.businessName ?? "SureSwim Pool & Spa";
+const logoUrl = s?.logoImage ? urlFor(s.logoImage).width(900).quality(95).url() : null;
 ---
 
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Approach — {bizName}</title>
 
 <style>
-:root {
-  --text: #0f172a;
-  --muted: #475569;
-  --border: #e2e8f0;
-  --accent: #0b5ed7;
-  --bg-soft: #f8fafc;
+/* Same styling as homepage for consistency */
+:root{
+  --text:#0f172a;
+  --muted:#475569;
+  --border:#e2e8f0;
+  --accent:#0b5ed7;
+  --soft:#f8fafc;
 }
-
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: var(--text);
-  background: #fff;
-  line-height: 1.75;
+body{
+  margin:0;
+  font-family: system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--text);
+  line-height:1.75;
 }
-
-header {
-  border-bottom: 1px solid var(--border);
+header{border-bottom:1px solid var(--border)}
+nav{
+  max-width:1120px;
+  margin:auto;
+  padding:18px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
-
-nav {
-  max-width: 1100px;
-  margin: auto;
-  padding: 14px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+nav img{height:78px}
+nav a{font-size:14px;color:var(--muted);text-decoration:none}
+main{
+  max-width:1120px;
+  margin:auto;
+  padding:72px 24px;
 }
-
-nav a {
-  font-size: 14px;
-  color: var(--muted);
-  text-decoration: none;
+h1{
+  font-size:clamp(40px,5vw,60px);
+  letter-spacing:-0.03em;
 }
-
-main {
-  max-width: 1100px;
-  margin: auto;
-  padding: 64px 20px;
+p{
+  max-width:78ch;
+  color:var(--muted);
 }
-
-h1 {
-  font-size: clamp(36px, 5vw, 56px);
-  letter-spacing: -0.03em;
-  margin-bottom: 20px;
+.section{margin-top:48px}
+.soft{
+  background:var(--soft);
+  padding:36px 28px;
+  border-radius:22px;
 }
-
-h2 {
-  margin-top: 64px;
-  margin-bottom: 16px;
-  font-size: 28px;
-  letter-spacing: -0.02em;
+blockquote{
+  margin:24px 0;
+  padding:16px 20px;
+  border-left:4px solid var(--accent);
+  background:#fff;
 }
-
-p {
-  max-width: 78ch;
-  color: var(--muted);
-  margin-bottom: 18px;
-}
-
-.menu {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  margin-top: 24px;
-}
-
-.card {
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 22px;
-  background: #fff;
-}
-
-.card h3 {
-  margin-top: 0;
-  margin-bottom: 8px;
-  font-size: 18px;
-}
-
-.card p {
-  margin: 0;
-  font-size: 15px;
-  color: var(--muted);
-}
-
-.soft {
-  background: var(--bg-soft);
-  padding: 48px 32px;
-  border-radius: 24px;
-}
-
-footer {
-  margin-top: 80px;
-  border-top: 1px solid var(--border);
-  padding-top: 32px;
-  font-size: 14px;
-  color: var(--muted);
-}
-
-footer a {
-  color: var(--accent);
-  text-decoration: none;
+footer{
+  border-top:1px solid var(--border);
+  padding:36px 24px;
+  text-align:center;
+  font-size:14px;
+  color:var(--muted);
 }
 </style>
 </head>
@@ -123,181 +79,69 @@ footer a {
 
 <header>
   <nav>
-    <strong>{bizName}</strong>
-    <a href="/">← Back to home</a>
+    {logoUrl && <img src={logoUrl} alt={bizName} />}
+    <a href="/">Home</a>
   </nav>
 </header>
 
 <main>
 
-<!-- INTRO -->
-<section>
-  <h1>Approach</h1>
+<h1>Approach</h1>
 
+<p>
+SureSwim exists to fill a gap — doing pool care the right way again.
+Not rushed. Not burned out. Not on autopilot.
+</p>
+
+<div class="section soft">
   <p>
-    This page exists for homeowners who want to understand how their pool is actually being
-    cared for — beyond surface cleaning and weekly routines.
+    I grew up around pool service, working alongside my dad as he ran his own business for nearly two decades.
+    I started SureSwim to apply that old-school care with modern chemistry, better information,
+    and an engineering mindset shaped by a background in computer science.
   </p>
 
+  <blockquote>
+    <strong>You’ll see a clean pool. The real work is keeping it stable when I’m not there.</strong>
+  </blockquote>
+</div>
+
+<div class="section">
+  <h2>Stability over time</h2>
   <p>
-    I’ve been involved in pool service most of my life, working alongside my dad as he ran his
-    own pool business for nearly two decades. That experience taught me that clean water is
-    not accidental — it’s the result of consistent decisions made over time.
+    After storms or long gaps, I fully reset the system. Once stable, I let it cruise.
+    Not every week needs heavy intervention — knowing when to act is the work.
   </p>
+</div>
 
+<div class="section soft">
+  <h2>Real-world systems</h2>
   <p>
-    I started SureSwim to take that foundation and approach it more deliberately.
-    Slower where needed. More thoughtful. More accountable.
+    Many pools have imperfect circulation, broken timers, or valve layouts that don’t behave ideally.
+    I adapt to the system that exists while keeping the water clean, safe, and predictable.
   </p>
-</section>
+</div>
 
-<!-- CORE PHILOSOPHY -->
-<section class="soft">
-  <h2>Core philosophy</h2>
-
-  <div class="menu">
-    <div class="card">
-      <h3>Clean is the outcome</h3>
-      <p>
-        A clean pool is the visible result. The real work happens in how the system is set up,
-        balanced, and maintained between visits.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Pools are systems</h3>
-      <p>
-        Water, circulation, filtration, plumbing, and environment all interact. Treating them
-        separately creates drift.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Stability beats correction</h3>
-      <p>
-        Preventing problems is quieter, cheaper, and more effective than fixing them after
-        they appear.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>One accountable mind</h3>
-      <p>
-        I work on every pool myself. The person observing the issue is the same person solving it.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- SYSTEM THINKING -->
-<section>
-  <h2>System-level thinking</h2>
-
+<div class="section">
+  <h2>Chemistry, applied practically</h2>
   <p>
-    Most pool problems don’t come from one obvious failure. They come from small misalignments
-    that compound over time.
+    Ideal targets matter, but real pools have constraints. I work toward proper sanitation
+    while managing what’s practical and safe week to week.
   </p>
+</div>
 
-  <div class="menu">
-    <div class="card">
-      <h3>Equipment awareness</h3>
-      <p>
-        Filters, seals, unions, bypasses, valves, and check valves are monitored for behavior,
-        not just presence.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Flow & interaction</h3>
-      <p>
-        Spas, waterfalls, cleaners, and returns affect each other. I pay attention to how
-        features interact with the main pump.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Methodical troubleshooting</h3>
-      <p>
-        Observe → adjust → verify → remember. No guesswork. No overcorrection.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- CHEMISTRY -->
-<section class="soft">
-  <h2>Chemistry as a system</h2>
-
-  <div class="menu">
-    <div class="card">
-      <h3>Liquid-first sanitation</h3>
-      <p>
-        Predictable, controllable chlorine behavior with minimal long-term side effects.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Stabilizer awareness</h3>
-      <p>
-        CYA is managed intentionally to avoid chemical creep and loss of control.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Balance, not chasing numbers</h3>
-      <p>
-        pH, alkalinity, and calcium are treated as a system, not isolated test results.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- OPERATIONAL GOALS -->
-<section>
-  <h2>Operational goals</h2>
-
-  <div class="menu">
-    <div class="card">
-      <h3>Between-visit cleanliness</h3>
-      <p>
-        A pool should stay clean even when I’m not there. Setup matters.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Efficiency awareness</h3>
-      <p>
-        Runtime, electricity use, and wear are balanced against cleanliness and safety.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Reduced manual intervention</h3>
-      <p>
-        The best system requires less hands-on correction over time, not more.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- CLOSING -->
-<section>
-  <h2>The result</h2>
-
+<div class="section soft">
+  <h2>Why SureSwim</h2>
   <p>
-    A pool that looks clean, behaves predictably, and quietly supports itself.
-    Care that’s most noticeable when I’m not there — and least noticeable when everything
-    is working as it should.
+    I’m not jaded or burned out. I approach each pool with attention, care,
+    and responsibility — the way I would if it were my own.
   </p>
-</section>
-
-<footer>
-  <p>
-    <a href="/">← Back to home</a>
-  </p>
-</footer>
+</div>
 
 </main>
+
+<footer>
+  © {new Date().getFullYear()} {bizName}
+</footer>
 
 </body>
 </html>
