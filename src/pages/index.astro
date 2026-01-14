@@ -1,0 +1,372 @@
+---
+import { sanity } from "../lib/sanity";
+import { urlFor } from "../lib/sanityImage";
+
+const query = `*[_type == "siteSettings"][0]{
+  logoImage,
+  businessName,
+  ownerName,
+  phone,
+  email,
+  heroHeadline,
+  heroSubheadline,
+  heroImageDesktop,
+  heroImageMobile,
+  serviceAreas,
+  services
+}`;
+
+const s = await sanity.fetch(query);
+
+const bizName = s?.businessName ?? "SureSwim Pool & Spa";
+const owner = s?.ownerName ?? "Eugene Kim";
+const phone = s?.phone ?? "(909) 668-3521";
+const phoneHref = `tel:${phone.replace(/[^\d+]/g, "")}`;
+const email = s?.email ?? "info@thesureswim.com";
+
+const areas = s?.serviceAreas ?? [];
+const services = s?.services ?? [];
+
+const logoUrl = s?.logoImage
+  ? urlFor(s.logoImage).width(520).quality(90).url()
+  : null;
+
+const heroDesktopUrl = s?.heroImageDesktop
+  ? urlFor(s.heroImageDesktop)
+      .width(2200)
+      .height(900)
+      .fit("crop")
+      .crop("focalpoint")
+      .quality(90)
+      .url()
+  : null;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{bizName}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root{
+      --blue:#0b5ed7;
+      --blue-soft:#e9f2ff;
+      --text:#0a1a2f;
+      --muted:#334155;
+      --border:#dbeafe;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:"Atkinson Hyperlegible", system-ui, sans-serif;
+      font-size:20px;
+      line-height:1.85;
+      color:var(--text);
+      background:#fff;
+    }
+
+    a{ color:var(--blue); text-decoration:none; }
+
+    .container{
+      width:min(1120px, calc(100% - 40px));
+      margin:auto;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      background:rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--border);
+      z-index:10;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:22px 0;
+    }
+
+    nav img{
+      height:clamp(64px, 7vw, 88px);
+      max-width:clamp(340px, 48vw, 520px);
+      object-fit:contain;
+    }
+
+    nav a{
+      margin-left:16px;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .hero{
+      position:relative;
+      padding:96px 0;
+      border-bottom:1px solid var(--border);
+      background:#fff;
+    }
+
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      background-size:cover;
+      background-position: 75% 20%;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0.97) 0%,
+        rgba(255,255,255,0.9) 45%,
+        rgba(255,255,255,0.3) 75%
+      );
+    }
+
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:420px;
+    }
+
+    .hero-copy{
+      text-align:center;
+      max-width:720px;
+    }
+
+    h1{
+      font-size: clamp(44px, 5vw, 64px);
+      margin-bottom:18px;
+      letter-spacing:-0.03em;
+    }
+
+    .hero-copy p{
+      font-size:20px;
+      color:var(--muted);
+      margin:0;
+    }
+
+    section{ padding:88px 0; }
+
+    h2{
+      text-align:center;
+      font-size:36px;
+      margin-bottom:20px;
+      letter-spacing:-0.02em;
+    }
+
+    p{
+      max-width:72ch;
+      margin:0 auto 18px;
+    }
+
+    .note{
+      border-left:6px solid var(--blue);
+      background:#f8fbff;
+      padding:16px 18px;
+      border-radius:14px;
+      max-width:78ch;
+      margin:24px auto 0;
+    }
+
+    .grid{
+      display:grid;
+      gap:22px;
+      margin-top:32px;
+    }
+
+    .three{ grid-template-columns: repeat(3, 1fr); }
+
+    .card{
+      border:2px solid var(--border);
+      border-radius:22px;
+      padding:22px;
+      background:#fff;
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      padding:40px 0;
+      font-size:16px;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    @media (max-width: 900px){
+      body{ font-size:18px; }
+      .three{ grid-template-columns:1fr; }
+      .hero-copy{ text-align:left; }
+      .hero-bg, .hero-overlay{ display:none; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      {logoUrl ? <img src={logoUrl} alt={bizName} /> : <strong>{bizName}</strong>}
+      <div>
+        <a href="#approach">Approach</a>
+        <a href="#chemistry">Care & Chemistry</a>
+        <a href="#services">What I Handle</a>
+        <a href="#areas">Areas</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  {heroDesktopUrl ? <div class="hero-bg" style={`background-image:url(${heroDesktopUrl});`}></div> : null}
+  {heroDesktopUrl ? <div class="hero-overlay"></div> : null}
+
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <h1>
+        {s?.heroHeadline ?? "Thoughtful, Owner-Operated Pool Care"}
+      </h1>
+      <p>
+        {s?.heroSubheadline ??
+          "Built on years of hands-on pool service alongside my dad, now carried forward with a modern, detail-focused approach that brings care and attention back to every pool."}
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="container">
+    <h2>How I approach pool care</h2>
+
+    <p>
+      I’ve been involved in pool service for most of my life, working alongside my
+      dad as he ran his own pool business for nearly two decades. That experience
+      shaped how I see pools — not as something to rush through, but as living
+      systems that respond to care, consistency, and attention over time.
+    </p>
+
+    <p>
+      I started my own service to take that old-school foundation and apply it in
+      a modern way. Better information, better chemistry practices, and more
+      deliberate decisions — while keeping the hands-on mindset that made
+      traditional pool service work.
+    </p>
+
+    <div class="note">
+      The goal is clean, stable water that makes sense to maintain — chemically,
+      mechanically, and practically.
+    </div>
+  </div>
+</section>
+
+<section id="chemistry">
+  <div class="container">
+    <h2>Care, chemistry, and attention to detail</h2>
+
+    <p>
+      Pools are open bodies of water. Dust, dirt, pollen, and organic debris are
+      constantly entering the pool — even when it looks clean. Algae doesn’t
+      appear overnight; it starts quietly on surfaces long before the water
+      changes color.
+    </p>
+
+    <p>
+      That’s why brushing and vacuuming matter. Physical removal breaks buildup
+      early, especially after windstorms, rain, or heavy use. Weekly attention
+      interrupts that process before neglect takes hold.
+    </p>
+
+    <p>
+      I pay close attention to stabilizer levels, chlorine behavior, pH balance,
+      alkalinity, and calcium hardness — not as isolated numbers, but as a system
+      that needs to stay predictable and easy to manage.
+    </p>
+
+    <p>
+      Cleaners should match the pool’s environment — debris type, surrounding
+      trees, shape, and plumbing. Sometimes a simple setup works well; other times,
+      a more capable option saves time and frustration. I focus on choosing what’s
+      appropriate, not just what’s expensive.
+    </p>
+
+    <div class="note">
+      I treat a pool like a body of water, not a decoration. Water changes quickly,
+      equipment ages, and the environment never stops affecting it. The work is
+      keeping it clean, fresh, and cared for — week after week.
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <h2>What I pay attention to</h2>
+    <div class="grid three">
+      {services.map(srv => (
+        <div class="card">
+          <strong>{srv.title}</strong>
+          <p>{srv.summary}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section id="areas">
+  <div class="container">
+    <h2>Service areas</h2>
+    <div class="grid three">
+      {areas.map(city => (
+        <div class="card"><strong>{city}</strong></div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+
+    <div class="note">
+      This service is a good fit for homeowners who value consistency, clear
+      communication, and working directly with the person responsible for their
+      pool.
+    </div>
+
+    <p style="text-align:center; margin-top:28px;">
+      {owner}<br/>
+      {bizName}<br/>
+      <a href={phoneHref}>{phone}</a><br/>
+      <a href={`mailto:${email}`}>{email}</a>
+    </p>
+
+    <p style="text-align:center; color:#334155; font-size:16px;">
+      Operating as a local pool service, with liability insurance and CPO certification.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © {new Date().getFullYear()} {bizName} — {owner}
+  </div>
+</footer>
+
+</body>
+</html>
